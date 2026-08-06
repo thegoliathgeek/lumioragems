@@ -37,10 +37,13 @@ export function Header() {
   return (
     <header
       className={cn(
+        // The band carries the footer's rose so the two ends of the page
+        // bracket the ivory ground. It is filled at rest rather than
+        // transparent; scrolling only firms it up with a blur and a rule.
         "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[var(--ease-luxe)]",
         scrolled || menuOpen
-          ? "border-b border-rose-200 bg-ivory-100/95 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent",
+          ? "border-b border-rose-300 bg-rose-200/95 backdrop-blur-md"
+          : "border-b border-rose-300/50 bg-rose-200",
       )}
     >
       <a
@@ -51,10 +54,10 @@ export function Header() {
       </a>
 
       <Container width="wide">
-        <div className="flex items-center justify-between py-5">
+        <div className="flex h-(--spacing-header) items-center justify-between">
           <Link
             href="/"
-            className="font-display text-[1.35rem] tracking-[0.3em] text-ink-900"
+            className="font-display text-[1.3rem] leading-none tracking-[0.3em] text-ink-900"
           >
             LUMIORA
           </Link>
@@ -101,7 +104,7 @@ export function Header() {
 
             <Link
               href="/contact"
-              className="hidden border border-gold-400/60 px-5 py-2.5 text-[0.66rem] uppercase tracking-[0.2em] text-ink-800 transition-all duration-500 hover:bg-gold-500 hover:text-ivory-50 sm:inline-block"
+              className="hidden border border-gold-400/60 px-5 py-2 text-[0.66rem] uppercase tracking-[0.2em] text-ink-800 transition-all duration-500 hover:bg-gold-500 hover:text-ivory-50 sm:inline-block"
             >
               Enquire
             </Link>
@@ -124,7 +127,7 @@ export function Header() {
       <div
         id="mobile-nav"
         hidden={!menuOpen}
-        className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-rose-200 bg-ivory-100 lg:hidden"
+        className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-rose-300 bg-rose-200 lg:hidden"
       >
         <Container>
           <nav aria-label="Mobile" className="py-4">
