@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organisationJsonLd, websiteJsonLd } from "@/lib/seo/metadata";
 import { site } from "@/data/site";
+import { COMING_SOON } from "@/lib/flags";
 import "./globals.css";
 
 /* Fonts are self-hosted by next/font at build time — no render-blocking
@@ -66,15 +67,28 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const fonts = `${playfair.variable} ${jost.variable} ${pinyon.variable} ${bodoni.variable}`;
+
+  // While the site is held back there is nothing to navigate to, so the header
+  // and footer are left out — the holding page brings its own <main> and footer
+  // line. The currency provider stays mounted either way: it renders no markup,
+  // and the shop pages it feeds are still prerendered at build time even when
+  // middleware is rewriting every request to the holding page.
   return (
-    <html lang="en-IN" className={`${playfair.variable} ${jost.variable} ${pinyon.variable} ${bodoni.variable}`}>
+    <html lang="en-IN" className={fonts}>
       <body className="min-h-dvh antialiased">
         <JsonLd data={organisationJsonLd()} />
-        <JsonLd data={websiteJsonLd()} />
+        {!COMING_SOON && <JsonLd data={websiteJsonLd()} />}
         <CurrencyProvider>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
+          {COMING_SOON ? (
+            children
+          ) : (
+            <>
+              <Header />
+              <main id="main">{children}</main>
+              <Footer />
+            </>
+          )}
         </CurrencyProvider>
       </body>
     </html>

@@ -4,10 +4,16 @@ import { collections } from "@/data/collections";
 import { products } from "@/data/products";
 import { journalPosts, cyclopediaEntries } from "@/data/journal";
 import { policies } from "@/data/policies";
+import { COMING_SOON } from "@/lib/flags";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url;
   const now = new Date();
+
+  // Held back: the holding page is the only live URL.
+  if (COMING_SOON) {
+    return [{ url: `${base}/`, lastModified: now, changeFrequency: "weekly", priority: 1 }];
+  }
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },

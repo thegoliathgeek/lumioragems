@@ -1,9 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { currencyForCountry, GEO_CURRENCY_COOKIE, CURRENCY_COOKIE } from "@/lib/currency/currencies";
+import { COMING_SOON, COMING_SOON_PATH } from "@/lib/flags";
 
 /**
  * Edge middleware.
  *
+ * 0. Coming-soon hold: while the flag is on, every page is rewritten to the
+ *    holding page and the API is closed. See src/lib/flags.ts.
  * 1. Cross-origin write protection for /api (defence in depth alongside SameSite).
  * 2. Geo hint: derives a likely currency from the CDN's country header and
  *    stores it as a *hint* cookie. An explicit choice by the visitor is stored
@@ -16,6 +19,27 @@ const ONE_YEAR = 60 * 60 * 24 * 365;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // ---- 0. Coming soon ------------------------------------------------------
+  // A rewrite, not a redirect: the visitor keeps the URL they asked for, so
+  // links and bookmarks still resolve once the site opens.
+  if (COMING_SOON) {
+    if (pathname.startsWith("/api")) {
+      return NextResponse.json(
+        { ok: false, error: "Lumiora Gems is opening shortly. Please try again soon." },
+        { status: 503, headers: { "Cache-Control": "no-store", "Retry-After": "86400" } },
+      );
+    }
+
+    if (pathname !== COMING_SOON_PATH) {
+      const url = request.nextUrl.clone();
+      url.pathname = COMING_SOON_PATH;
+      url.search = "";
+      return NextResponse.rewrite(url);
+    }
+
+    return NextResponse.next();
+  }
 
   if (pathname.startsWith("/api") && MUTATING.has(request.method)) {
     const origin = request.headers.get("origin");
