@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Jost, Pinyon_Script } from "next/font/google";
+import { Playfair_Display, Jost, Pinyon_Script, Bodoni_Moda } from "next/font/google";
 import { CurrencyProvider } from "@/components/currency/CurrencyProvider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -23,6 +23,14 @@ const jost = Jost({
   display: "swap",
   variable: "--font-jost",
   weight: ["300", "400", "500"],
+});
+
+/* Bodoni Moda is variable on both weight and optical size, so no weight list —
+   the wordmark asks for the display optical size via font-variation-settings. */
+const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-bodoni",
 });
 
 const pinyon = Pinyon_Script({
@@ -51,7 +59,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f3ef",
+  themeColor: "#fbfaf7",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -59,7 +67,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${playfair.variable} ${jost.variable} ${pinyon.variable}`}>
+    <html lang="en-IN" className={`${playfair.variable} ${jost.variable} ${pinyon.variable} ${bodoni.variable}`}>
       <body className="min-h-dvh antialiased">
         <JsonLd data={organisationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
