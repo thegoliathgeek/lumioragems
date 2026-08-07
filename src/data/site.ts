@@ -11,7 +11,7 @@ export const site = {
   whatsapp: "+919000000000",
   address: {
     street: "12 Vittal Mallya Road",
-    locality: "Bengaluru",
+    locality: "Australia",
     region: "Karnataka",
     postalCode: "560001",
     country: "IN",
