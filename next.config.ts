@@ -67,7 +67,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/collections/all-sapphires", destination: "/shop/all-sapphires", permanent: true },
-      { source: "/collections/:slug", destination: "/shop/:slug", permanent: true },
+      // `[^.]+` keeps this legacy redirect off the static assets in
+      // public/collections/ — without it, /collections/blue-sapphires.jpg is
+      // 308'd to /shop/blue-sapphires.jpg and the image optimizer sees a 404.
+      // Real collection slugs never contain a dot; asset requests always do.
+      { source: "/collections/:slug([^.]+)", destination: "/shop/:slug", permanent: true },
       { source: "/products/:slug", destination: "/shop/product/:slug", permanent: true },
       { source: "/blog", destination: "/discover/journal", permanent: true },
       { source: "/blogs/:slug", destination: "/discover/journal/:slug", permanent: true },

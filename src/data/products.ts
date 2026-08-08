@@ -19,6 +19,7 @@ export const products: Product[] = [
     carat: 3.42, shape: "Cushion", colour: "Cornflower Blue", clarity: "Eye Clean",
     origin: "Sri Lanka (Ceylon)", treatment: "Unheated", dimensions: "9.12 × 8.04 × 5.61 mm",
     certificate: "GRS Certified", price: 7400, availability: "available", listedAt: "2026-07-18",
+    images: ["/gems/ceylon-cornflower-blue-3-42ct.jpg"],
     description:
       "A velvety cornflower blue with the soft, slightly sleepy saturation that Ceylon is prized for. Unheated, eye clean, and cut to hold colour evenly from every angle.",
   },
@@ -28,6 +29,7 @@ export const products: Product[] = [
     carat: 2.18, shape: "Oval", colour: "Pink-Orange", clarity: "Eye Clean",
     origin: "Sri Lanka (Ceylon)", treatment: "Unheated", dimensions: "8.44 × 6.71 × 4.32 mm",
     certificate: "GIA Certified", price: 20500, availability: "available", listedAt: "2026-07-22",
+    images: ["/gems/padparadscha-lotus-2-18ct.jpg"],
     description:
       "The rarest expression of corundum — a true lotus-and-sunrise blend of pink and orange, holding both hues simultaneously rather than shifting between them.",
   },
@@ -37,6 +39,7 @@ export const products: Product[] = [
     carat: 2.64, shape: "Hexagon", colour: "Teal / Blue-Green", clarity: "Eye Clean",
     origin: "Australia", treatment: "Unheated", dimensions: "8.90 × 7.85 × 4.95 mm",
     certificate: "In-house Certified", price: 4650, availability: "available", listedAt: "2026-06-30",
+    images: ["/gems/teal-parti-sapphire-2-64ct.jpg"],
     description:
       "A hexagonal step cut that plays the stone's natural blue and green zoning against each other. A modern collector's stone, and unusually flattering on the hand.",
   },
@@ -46,6 +49,7 @@ export const products: Product[] = [
     carat: 4.05, shape: "Emerald", colour: "Royal Blue", clarity: "Slightly Included",
     origin: "Madagascar", treatment: "Heated", dimensions: "10.02 × 8.11 × 5.44 mm",
     certificate: "GRS Certified", price: 10700, availability: "reserved", listedAt: "2026-06-12",
+    images: ["/gems/royal-blue-madagascar-4-05ct.jpg"],
     description:
       "Deep, even royal blue in a classic emerald cut. The step facets favour colour over sparkle, which is exactly what a stone of this saturation calls for.",
   },
@@ -55,6 +59,7 @@ export const products: Product[] = [
     carat: 5.11, shape: "Cushion", colour: "Golden Yellow", clarity: "Eye Clean",
     origin: "Sri Lanka (Ceylon)", treatment: "Heated", dimensions: "10.44 × 9.20 × 6.02 mm",
     certificate: "IGI Certified", price: 5900, availability: "available", listedAt: "2026-05-28",
+    images: ["/gems/golden-yellow-sapphire-5-11ct.jpg"],
     description:
       "A generous golden yellow with warmth rather than lemon sharpness. Frequently sought as a Pukhraj stone, and equally at home in a contemporary setting.",
   },
@@ -64,6 +69,7 @@ export const products: Product[] = [
     carat: 1.88, shape: "Round", colour: "Vivid Pink", clarity: "Eye Clean",
     origin: "Madagascar", treatment: "Heated", dimensions: "7.42 × 7.40 × 4.66 mm",
     certificate: "In-house Certified", price: 3400, availability: "available", listedAt: "2026-07-25",
+    images: ["/gems/hot-pink-sapphire-1-88ct.jpg"],
     description:
       "Saturated, slightly purplish pink in a brilliant round cut. Bright under almost any lighting, which makes it an unusually easy stone to wear daily.",
   },
@@ -73,6 +79,7 @@ export const products: Product[] = [
     carat: 2.32, shape: "Oval", colour: "Soft Peach", clarity: "Eye Clean",
     origin: "Sri Lanka (Ceylon)", treatment: "Unheated", dimensions: "8.60 × 6.90 × 4.51 mm",
     certificate: "In-house Certified", price: 3900, availability: "available", listedAt: "2026-06-05",
+    images: ["/gems/peach-sapphire-2-32ct.jpg"],
     description:
       "A gentle peach with a whisper of pink at the edges. Particularly beautiful in rose gold, where the metal echoes rather than competes with the stone.",
   },
@@ -82,6 +89,7 @@ export const products: Product[] = [
     carat: 3.01, shape: "Round", colour: "Colourless", clarity: "Eye Clean",
     origin: "Sri Lanka (Ceylon)", treatment: "Unheated", dimensions: "8.85 × 8.83 × 5.70 mm",
     certificate: "IGI Certified", price: 2470, availability: "available", listedAt: "2026-05-14",
+    images: ["/gems/white-sapphire-3-01ct.jpg"],
     description:
       "Bright and entirely colourless, cut to modern proportions for maximum return of light. A natural, fully traceable alternative to a diamond centre stone.",
   },
@@ -91,6 +99,7 @@ export const products: Product[] = [
     carat: 2.07, shape: "Pear", colour: "Violet", clarity: "Eye Clean",
     origin: "Sri Lanka (Ceylon)", treatment: "Unheated", dimensions: "9.80 × 6.55 × 4.20 mm",
     certificate: "In-house Certified", price: 4150, availability: "available", listedAt: "2026-06-21",
+    images: ["/gems/violet-sapphire-2-07ct.jpg"],
     description:
       "A clean violet that leans blue in daylight and plum indoors. Cut as a pear to lengthen the stone's natural crystal shape without sacrificing weight.",
   },
@@ -100,6 +109,7 @@ export const products: Product[] = [
     carat: 2.55, shape: "Cushion", colour: "Blue to Plum", clarity: "Slightly Included",
     origin: "Tanzania", treatment: "Unheated", dimensions: "8.20 × 7.60 × 5.10 mm",
     certificate: "GRS Certified", price: 8900, availability: "available", listedAt: "2026-07-02",
+    images: ["/gems/colour-change-sapphire-2-55ct.jpg"],
     description:
       "Steel blue under daylight, shifting to a warm plum under incandescent light. The change is complete and repeatable rather than a subtle tonal drift.",
   },
@@ -109,6 +119,7 @@ export const products: Product[] = [
     carat: 1.64, shape: "Cushion", colour: "Pigeon's Blood Red", clarity: "Slightly Included",
     origin: "Mozambique", treatment: "Unheated", dimensions: "7.10 × 6.45 × 4.02 mm",
     certificate: "GRS Certified", price: 25200, availability: "available", listedAt: "2026-07-27",
+    images: ["/gems/pigeons-blood-ruby-1-64ct.jpg"],
     description:
       "The red that gives ruby its reputation — deeply saturated with a faint fluorescent glow that lifts the stone in daylight. Unheated, with GRS confirmation of origin.",
   },
@@ -118,6 +129,7 @@ export const products: Product[] = [
     carat: 6.4, shape: "Emerald", colour: "Deep Sea Blue", clarity: "Loupe Clean",
     origin: "Brazil", treatment: "Heated", dimensions: "13.20 × 9.80 × 6.90 mm",
     certificate: "In-house Certified", price: 6700, availability: "available", listedAt: "2026-04-30",
+    images: ["/gems/santa-maria-aquamarine-6-40ct.jpg"],
     description:
       "A Santa Maria blue with none of the green that lesser aquamarine carries. Loupe clean, and large enough to make the colour read across a room.",
   },
@@ -127,6 +139,7 @@ export const products: Product[] = [
     carat: 3.2, shape: "Oval", colour: "Medium Blue", clarity: "Eye Clean",
     origin: "Sri Lanka (Ceylon)", treatment: "Heated", dimensions: "7.60 × 5.80 mm (each)",
     certificate: "In-house Certified", price: 5150, availability: "available", listedAt: "2026-05-02",
+    images: ["/gems/matched-blue-sapphire-pair-3-20ctw.jpg"],
     description:
       "A true matched pair — cut from the same rough, aligned for tone, saturation and outline. Total weight 3.20 ct across the two stones.",
   },
@@ -136,6 +149,7 @@ export const products: Product[] = [
     carat: 1.95, shape: "Round", colour: "Mint Green", clarity: "Eye Clean",
     origin: "Montana, USA", treatment: "Unheated", dimensions: "7.55 × 7.52 × 4.80 mm",
     certificate: "In-house Certified", price: 2920, availability: "sold", listedAt: "2026-03-18",
+    images: ["/gems/mint-green-sapphire-1-95ct.jpg"],
     description:
       "A pale, cool mint with excellent transparency. Montana sapphires of this clarity in a fully traceable supply chain are increasingly difficult to source.",
   },
@@ -145,6 +159,7 @@ export const products: Product[] = [
     carat: 3.77, shape: "Radiant", colour: "Champagne", clarity: "Eye Clean",
     origin: "Sri Lanka (Ceylon)", treatment: "Unheated", dimensions: "9.40 × 7.90 × 5.30 mm",
     certificate: "In-house Certified", price: 4500, availability: "available", listedAt: "2026-06-16",
+    images: ["/gems/champagne-sapphire-3-77ct.jpg"],
     description:
       "A warm, softly golden champagne with hints of rose. The radiant cut adds brilliance without pushing the colour towards yellow.",
   },
@@ -154,6 +169,7 @@ export const products: Product[] = [
     carat: 3.08, shape: "Kite", colour: "Blue / Yellow Parti", clarity: "Eye Clean",
     origin: "Australia", treatment: "Unheated", dimensions: "11.20 × 8.10 × 5.00 mm",
     certificate: "In-house Certified", price: 5080, availability: "available", listedAt: "2026-07-09",
+    images: ["/gems/bicolour-parti-sapphire-3-08ct.jpg"],
     description:
       "Two distinct colour zones — a cool blue and a warm yellow — divided cleanly across a kite cut. Genuinely unrepeatable, as all parti sapphires are.",
   },
@@ -163,6 +179,7 @@ export const products: Product[] = [
     carat: 1.42, shape: "Cushion", colour: "Cobalt Blue", clarity: "Eye Clean",
     origin: "Vietnam", treatment: "Unheated", dimensions: "6.40 × 6.05 × 4.10 mm",
     certificate: "GRS Certified", price: 15500, availability: "available", listedAt: "2026-07-29",
+    images: ["/gems/cobalt-spinel-1-42ct.jpg"],
     description:
       "An electric cobalt blue that no sapphire quite reproduces. Cobalt spinel is rarer than fine sapphire and, among collectors, considerably more sought after.",
   },
@@ -172,6 +189,7 @@ export const products: Product[] = [
     carat: 4.88, shape: "Oval", colour: "Raspberry Pink", clarity: "Slightly Included",
     origin: "Mozambique", treatment: "Unheated", dimensions: "12.10 × 9.05 × 6.20 mm",
     certificate: "In-house Certified", price: 3060, availability: "available", listedAt: "2026-04-11",
+    images: ["/gems/rubellite-tourmaline-4-88ct.jpg"],
     description:
       "A saturated raspberry rubellite that holds its colour under artificial light — the quality that separates true rubellite from ordinary pink tourmaline.",
   },

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { GemFigure } from "@/components/gem/GemFigure";
+import { CollectionImage } from "@/components/gem/CollectionImage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getCollections, getProducts } from "@/lib/api/products";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo/metadata";
@@ -61,13 +61,12 @@ export default async function ShopPage() {
                 {items.map((collection, index) => (
                   <Reveal key={collection.slug} delay={index * 60}>
                     <Link href={`/shop/${collection.slug}`} className="group block text-center">
-                      <div className="flex aspect-square items-center justify-center rounded-(--radius-image) bg-rose-100 transition-colors duration-700 group-hover:bg-rose-200">
-                        <GemFigure
-                          hue={collection.hue}
-                          size={80}
-                          className="transition-transform duration-[1100ms] ease-[var(--ease-luxe)] group-hover:scale-110"
-                        />
-                      </div>
+                      <CollectionImage
+                        collection={collection}
+                        className="aspect-square"
+                        gemSize={80}
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      />
                       <h3 className="mt-4 text-base leading-snug transition-colors duration-500 group-hover:text-gold-600">
                         {collection.name}
                       </h3>

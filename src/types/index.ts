@@ -34,6 +34,8 @@ export interface Collection {
   tagline: string;
   description: string;
   group: "sapphire" | "gemstone" | "curated";
+  /** Tile photography. Falls back to the generated gem figure when absent. */
+  image?: string;
 }
 
 export interface JournalPost {

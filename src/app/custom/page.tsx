@@ -1,8 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { GemFigure } from "@/components/gem/GemFigure";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
@@ -13,9 +13,9 @@ export const metadata = pageMetadata({
 });
 
 const routes = [
-  { title: "Start with a stone", body: "Choose something from the collection and we design the piece around it. The stone leads; the setting follows.", href: "/shop/all-sapphires", cta: "Browse the collection" },
-  { title: "Start with an idea", body: "Describe the piece and we source stones to match — colour, carat, budget and timeline. Options within days, no obligation.", href: "/custom/enquiry", cta: "Begin an enquiry" },
-  { title: "Start with an heirloom", body: "Reset an inherited stone into something that will actually be worn. We assess the stone and the metal, and tell you honestly what is worth reusing.", href: "/contact", cta: "Talk to us" },
+  { title: "Start with a stone", body: "Choose something from the collection and we design the piece around it. The stone leads; the setting follows.", href: "/shop/all-sapphires", cta: "Browse the collection", image: "/studio/start-with-a-stone.jpg", alt: "A loose stone examined under a loupe" },
+  { title: "Start with an idea", body: "Describe the piece and we source stones to match — colour, carat, budget and timeline. Options within days, no obligation.", href: "/custom/enquiry", cta: "Begin an enquiry", image: "/studio/start-with-an-idea.jpg", alt: "A stone being measured against a grading chart" },
+  { title: "Start with an heirloom", body: "Reset an inherited stone into something that will actually be worn. We assess the stone and the metal, and tell you honestly what is worth reusing.", href: "/contact", cta: "Talk to us", image: "/studio/start-with-an-heirloom.jpg", alt: "An inherited ring worn on the hand at the workbench" },
 ];
 
 export default function CustomPage() {
@@ -34,11 +34,13 @@ export default function CustomPage() {
           {routes.map((route, index) => (
             <Reveal key={route.title} delay={index * 90}>
               <div className="flex h-full flex-col">
-                <div className="mb-7 flex aspect-4/3 items-center justify-center rounded-(--radius-image) bg-rose-100">
-                  <GemFigure
-                    hue={index === 0 ? "blue" : index === 1 ? "pink" : "champagne"}
-                    shape={index === 0 ? "cushion" : index === 1 ? "pear" : "emerald"}
-                    size={96}
+                <div className="relative mb-7 aspect-4/3 overflow-hidden rounded-(--radius-image) bg-rose-100">
+                  <Image
+                    src={route.image}
+                    alt={route.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
                   />
                 </div>
                 <h2 className="text-xl">{route.title}</h2>

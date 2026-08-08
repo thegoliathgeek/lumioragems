@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Hero } from "@/components/layout/Hero";
 import { ProductCard } from "@/components/shop/ProductCard";
-import { GemFigure } from "@/components/gem/GemFigure";
+import { CollectionImage } from "@/components/gem/CollectionImage";
 import { getFeaturedProducts } from "@/lib/api/products";
 import { sapphireCollections } from "@/data/collections";
 import { journalPosts } from "@/data/journal";
@@ -42,13 +43,12 @@ export default async function HomePage() {
             {colourStories.map((collection, index) => (
               <Reveal key={collection.slug} delay={index * 80}>
                 <Link href={`/shop/${collection.slug}`} className="group block text-center">
-                  <div className="flex aspect-4/3 items-center justify-center rounded-(--radius-image) bg-rose-100 transition-colors duration-700 group-hover:bg-rose-200">
-                    <GemFigure
-                      hue={collection.hue}
-                      size={92}
-                      className="transition-transform duration-[1100ms] ease-[var(--ease-luxe)] group-hover:scale-110"
-                    />
-                  </div>
+                  <CollectionImage
+                    collection={collection}
+                    className="aspect-4/3"
+                    gemSize={92}
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                  />
                   <h3 className="mt-5 text-lg transition-colors duration-500 group-hover:text-gold-600">
                     {collection.name}
                   </h3>
@@ -95,8 +95,14 @@ export default async function HomePage() {
         <Container>
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <Reveal>
-              <div className="flex aspect-4/5 items-center justify-center rounded-(--radius-image) bg-rose-100">
-                <GemFigure hue="padparadscha" shape="oval" size={190} />
+              <div className="relative aspect-4/5 overflow-hidden rounded-(--radius-image) bg-rose-100">
+                <Image
+                  src="/studio/bespoke-panel.jpg"
+                  alt="A pear-cut peach sapphire set in rose gold, from a past commission"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
             </Reveal>
 

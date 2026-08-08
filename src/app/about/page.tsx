@@ -1,8 +1,8 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { GemFigure } from "@/components/gem/GemFigure";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { site } from "@/data/site";
 
@@ -103,8 +103,14 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="flex aspect-4/3 items-center justify-center rounded-(--radius-image) bg-rose-100">
-              <GemFigure hue="champagne" shape="emerald" size={170} />
+            <div className="relative aspect-4/3 overflow-hidden rounded-(--radius-image) bg-rose-100">
+              <Image
+                src="/studio/workshop-bench.jpg"
+                alt="A setter sorting stones at the bench in the Bengaluru workshop"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
           </Reveal>
         </div>
