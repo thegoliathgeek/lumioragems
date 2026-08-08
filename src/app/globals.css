@@ -25,17 +25,17 @@
   --color-gold-300: #d8c39b;
   --color-gold-400: #c4a574;
   --color-gold-500: #b08f5e;
-  --color-gold-600: #96774a;
+  --color-gold-600: #8a6b3f;
 
   --color-error: #a2402f;
   --color-success: #4a6b4e;
 
-  --color-ink-400: #8a877f;
-  --color-ink-500: #6d6a63;
-  --color-ink-600: #55534e;
-  --color-ink-700: #43413d;
-  --color-ink-800: #3a3936;
-  --color-ink-900: #2a2926;
+  --color-ink-400: #75726a;
+  --color-ink-500: #575550;
+  --color-ink-600: #43413d;
+  --color-ink-700: #34332f;
+  --color-ink-800: #2c2b28;
+  --color-ink-900: #1e1d1b;
 
   /* Semantic aliases — components use these, not the raw ramps. */
   --color-surface: var(--color-ivory-100);

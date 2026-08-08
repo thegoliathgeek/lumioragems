@@ -25,11 +25,11 @@ non-CSS consumers — the SVG gem renderer and the HTML email templates.
 | `rose-300` | `#c9bbb3` | Input borders, dividers |
 | `gold-400` | `#c4a574` | Rules, sparkle, decorative strokes |
 | `gold-500` | `#b08f5e` | Primary accent, script type, hover states |
-| `gold-600` | `#96774a` | Eyebrows, small accented text (contrast-safe) |
-| `ink-400` | `#8a877f` | Meta text, captions |
-| `ink-500` | `#6d6a63` | Body copy |
-| `ink-800` | `#3a3936` | Headings, primary buttons |
-| `ink-900` | `#2a2926` | Wordmark, prices |
+| `gold-600` | `#8a6b3f` | Eyebrows, small accented text (contrast-safe) |
+| `ink-400` | `#75726a` | Meta text, captions |
+| `ink-500` | `#575550` | Body copy |
+| `ink-800` | `#2c2b28` | Headings, primary buttons |
+| `ink-900` | `#1e1d1b` | Wordmark, prices |
 | `error` | `#a2402f` | Form errors |
 
 Semantic aliases (`--color-surface`, `--color-accent`, `--color-heading`) sit
