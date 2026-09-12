@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   authors: [{ name: site.name }],
   creator: site.name,
   keywords: [
-    "natural sapphires", "unheated sapphire", "Ceylon sapphire", "padparadscha",
-    "teal sapphire", "loose gemstones India", "certified sapphire", "bespoke jewellery",
+    "natural sapphires", "unheated sapphire", "Ceylon sapphire", "spinel", "tourmaline",
+    "hessonite garnet", "loose gemstones India", "certified sapphire", "bespoke jewellery",
   ],
   formatDetection: { telephone: false, address: false, email: false },
   robots: { index: true, follow: true },

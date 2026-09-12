@@ -7,7 +7,7 @@ import { Hero } from "@/components/layout/Hero";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { CollectionImage } from "@/components/gem/CollectionImage";
 import { getFeaturedProducts } from "@/lib/api/products";
-import { sapphireCollections } from "@/data/collections";
+import { sapphireCollections, gemstoneCollections } from "@/data/collections";
 import { journalPosts } from "@/data/journal";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { formatDate } from "@/lib/utils";
@@ -23,7 +23,9 @@ export const revalidate = 3600;
 
 export default async function HomePage() {
   const featured = await getFeaturedProducts(3);
-  const colourStories = sapphireCollections.slice(0, 6);
+  const colourStories = [...sapphireCollections, ...gemstoneCollections]
+    .filter((c) => (c.stock ?? 0) > 0)
+    .slice(0, 6);
 
   return (
     <>
@@ -36,7 +38,7 @@ export default async function HomePage() {
             eyebrow="Shop by colour"
             script="A spectrum,"
             title="ethically drawn"
-            intro="From the deep of a Ceylon blue to the first blush of a padparadscha — explore by the shade that speaks to you."
+            intro="From the deep of a Ceylon blue to the first blush of a pink tourmaline — explore by the shade that speaks to you."
           />
 
           <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-3">

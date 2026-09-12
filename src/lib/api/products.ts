@@ -33,6 +33,17 @@ export async function getCollection(slug: string): Promise<Collection | null> {
   return all.find((c) => c.slug === slug) ?? collectionsBySlug.get(slug) ?? null;
 }
 
+/**
+ * Stones in stock for a collection. "All Sapphires" totals the sapphire colour
+ * collections; other curated collections have no stock of their own.
+ */
+export function collectionStock(collection: Collection, all: Collection[]): number | undefined {
+  if (collection.slug === "all-sapphires") {
+    return all.filter((c) => c.group === "sapphire").reduce((sum, c) => sum + (c.stock ?? 0), 0);
+  }
+  return collection.stock;
+}
+
 /** Products belonging to a collection, honouring the two curated virtual collections. */
 export async function getProductsInCollection(slug: string): Promise<Product[]> {
   const all = await getProducts();

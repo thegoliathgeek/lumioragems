@@ -1,7 +1,7 @@
 export type GemHue =
   | "blue" | "teal" | "green" | "yellow" | "pink" | "padparadscha"
   | "peach" | "champagne" | "white" | "violet" | "purple"
-  | "ruby" | "aquamarine" | "default";
+  | "ruby" | "aquamarine" | "citrine" | "hessonite" | "garnet" | "zircon" | "default";
 
 export type Availability = "available" | "reserved" | "sold";
 
@@ -36,6 +36,8 @@ export interface Collection {
   group: "sapphire" | "gemstone" | "curated";
   /** Tile photography. Falls back to the generated gem figure when absent. */
   image?: string;
+  /** Stones held for this gem type. Absent on curated collections. */
+  stock?: number;
 }
 
 export interface JournalPost {

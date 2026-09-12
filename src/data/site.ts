@@ -37,9 +37,9 @@ export const navigation = [
       { label: "All Sapphires", href: "/shop/all-sapphires" },
       { label: "Newly Listed", href: "/shop/newly-listed" },
       { label: "Blue Sapphires", href: "/shop/blue-sapphires" },
-      { label: "Padparadscha", href: "/shop/padparadscha-sapphires" },
-      { label: "Ruby", href: "/shop/ruby" },
-      { label: "Other Gemstones", href: "/shop/other-gemstones" },
+      { label: "Spinel", href: "/shop/spinel" },
+      { label: "Hessonite Garnet", href: "/shop/hessonite-garnet" },
+      { label: "Every Collection", href: "/shop" },
     ],
   },
   {

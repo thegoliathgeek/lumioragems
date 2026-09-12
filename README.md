@@ -89,8 +89,8 @@ src/
 | `/shop` | Shop Gems landing |
 | `/shop/all-sapphires` | Full sapphire catalogue |
 | `/shop/newly-listed` | Recent additions |
-| `/shop/{colour}-sapphires` | Colour collections (blue, yellow, pink, teal-green, padparadscha, peach-champagne, white, violet-purple, colour-change, unique-colours) |
-| `/shop/ruby` · `/aquamarine` · `/pairs` · `/other-gemstones` | Other collections |
+| `/shop/{colour}-sapphires` | Sapphire colour collections (blue, yellow, pink, white) |
+| `/shop/green-tourmaline` · `/pink-tourmaline` · `/aquamarine` · `/green-zircon` · `/amethyst` · `/citrine` · `/spinel` · `/hessonite-garnet` · `/almandine-spessartine-garnet` | Gemstone collections |
 | `/shop/product/{slug}` | Product detail + enquiry |
 | `/custom` · `/process` · `/gallery` · `/enquiry` | Custom jewellery |
 | `/discover` · `/journal` · `/journal/{slug}` · `/gem-cyclopedia` · `/video-library` | Discover |

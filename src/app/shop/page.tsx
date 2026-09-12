@@ -4,13 +4,13 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { CollectionImage } from "@/components/gem/CollectionImage";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { getCollections, getProducts } from "@/lib/api/products";
+import { collectionStock, getCollections, getProducts } from "@/lib/api/products";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Shop Gems",
   description:
-    "Browse every Lumiora collection — natural sapphires by colour, ruby, aquamarine, matched pairs and other fine coloured stones. All certified, all treatments disclosed.",
+    "Browse every Lumiora collection — natural sapphires by colour, tourmaline, spinel, garnet, zircon, amethyst, citrine and aquamarine. All certified, all treatments disclosed.",
   path: "/shop",
 });
 
@@ -19,14 +19,17 @@ export const revalidate = 1800;
 export default async function ShopPage() {
   const [collections, products] = await Promise.all([getCollections(), getProducts()]);
 
-  const counts = new Map<string, number>();
+  // Stocked collections show what the vault holds; the rest count their listings.
+  const labels = new Map<string, string>();
   for (const collection of collections) {
-    if (collection.slug === "all-sapphires") {
-      counts.set(collection.slug, products.filter((p) => p.gemType === "Sapphire").length);
-    } else if (collection.slug === "newly-listed") {
-      counts.set(collection.slug, Math.min(8, products.length));
+    const stock = collectionStock(collection, collections);
+    if (stock === undefined) {
+      const listed = collection.slug === "newly-listed"
+        ? Math.min(8, products.length)
+        : products.filter((p) => p.collections.includes(collection.slug)).length;
+      labels.set(collection.slug, `${listed} ${listed === 1 ? "stone" : "stones"}`);
     } else {
-      counts.set(collection.slug, products.filter((p) => p.collections.includes(collection.slug)).length);
+      labels.set(collection.slug, stock > 0 ? `${stock} in stock` : "On request");
     }
   }
 
@@ -71,7 +74,7 @@ export default async function ShopPage() {
                         {collection.name}
                       </h3>
                       <p className="mt-1 text-[0.68rem] uppercase tracking-[0.18em] text-ink-400">
-                        {counts.get(collection.slug) ?? 0} stones
+                        {labels.get(collection.slug)}
                       </p>
                     </Link>
                   </Reveal>

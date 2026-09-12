@@ -37,6 +37,10 @@ export const gemColours: Record<string, { light: string; mid: string; deep: stri
   purple: { light: "#c6a9e0", mid: "#7a4ba8", deep: "#3f2360" },
   ruby: { light: "#f2a3a8", mid: "#c0304a", deep: "#6d1424" },
   aquamarine: { light: "#b8e6ec", mid: "#5aa9bd", deep: "#2a5c6b" },
+  citrine: { light: "#fbe3a0", mid: "#e9a53a", deep: "#9a5a12" },
+  hessonite: { light: "#f4c69a", mid: "#c8772f", deep: "#7a3f12" },
+  garnet: { light: "#e8a0a0", mid: "#9e2b32", deep: "#4f1117" },
+  zircon: { light: "#dbe8a4", mid: "#95ad3f", deep: "#4d5c16" },
   default: { light: "#d8c39b", mid: "#b08f5e", deep: "#6b5230" },
 };
 
