@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { site } from "@/data/site";
 
 /**
  * The hero reproduces the brand deck's title lockup: a gold copperplate word
  * riding across a wide-tracked serif wordmark.
  *
  * A full-bleed photograph runs behind both the lockup and the supporting copy,
- * down to the divider above the assurance strip, with the brand rose laid over
+ * down to the bottom of the banner, with the brand rose laid over
  * it as a tint rather than under it. The banner is deliberately held to about a
  * quarter of the viewport: the type is sized off `vh` as well as `vw` so a
  * short laptop screen shrinks the wordmark instead of pushing the copy below
@@ -53,7 +52,7 @@ export function Hero() {
             className="relative z-10 pb-5 pt-6 lg:pt-8"
           >
             <div className="animate-(--animate-rise)">
-              <p className="eyebrow mb-3">Ceylon &amp; Beyond · Unheated Natural Sapphires</p>
+              <p className="eyebrow mb-3">Lumiora Gemstones</p>
 
               <h1 className="relative">
                 {/* The script word is decorative — repeated in an sr-only span
@@ -62,11 +61,11 @@ export function Hero() {
                   aria-hidden
                   className="script-accent block -mb-[0.28em] translate-x-1 text-[clamp(1.4rem,min(3.4vw,4.2vh),2.75rem)]"
                 >
-                  Luminous
+                  Crafted by
                 </span>
-                <span className="sr-only">Luminous </span>
+                <span className="sr-only">Crafted by </span>
                 <span className="block font-wordmark text-[clamp(1.9rem,min(7.4vw,8vh),5.5rem)] font-medium leading-[0.9] tracking-[0.04em] [font-variation-settings:'opsz'_96]">
-                  SAPPHIRE
+                  NATURE
                 </span>
               </h1>
             </div>
@@ -76,10 +75,8 @@ export function Hero() {
         {/* ---- Supporting copy, still on the panel ----------------------- */}
         <Container width="wide" className="relative z-10 pb-7 pt-7 lg:pb-8 lg:pt-8">
           <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-            <p className="max-w-2xl leading-relaxed text-ink-500">
-              A quietly curated house of natural, ethically sourced gemstones. Every stone
-              independently certified, every treatment disclosed — chosen for a life measured in
-              generations rather than seasons.
+            <p className="max-w-2xl font-display text-[clamp(1.25rem,2.2vw,1.75rem)] leading-snug text-ink-700">
+              Rare by nature. Timeless by design.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 lg:shrink-0">
@@ -87,13 +84,13 @@ export function Hero() {
                 href="/shop/all-sapphires"
                 className="rounded-[2px] bg-ink-800 px-9 py-4 text-[0.72rem] uppercase tracking-[0.22em] text-ivory-50 transition-all duration-500 hover:-translate-y-px hover:bg-gold-500"
               >
-                Explore the collection
+                Explore loose sapphires
               </Link>
               <Link
-                href="/custom/enquiry"
+                href="/custom"
                 className="rounded-[2px] border border-gold-400/60 px-9 py-4 text-[0.72rem] uppercase tracking-[0.22em] text-ink-800 transition-all duration-500 hover:bg-gold-500 hover:text-ivory-50"
               >
-                Bespoke enquiry
+                Create with Lumiora
               </Link>
             </div>
           </div>
@@ -118,18 +115,6 @@ export function Hero() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-ivory-100"
         />
       </div>
-
-      {/* ---- Assurance strip, back on the page ground -------------------- */}
-      <Container width="wide" className="pb-12">
-        <ul className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-rose-300 pt-6 sm:grid-cols-4">
-          {site.assurances.map((item) => (
-            <li key={item.label} className="text-[0.68rem] uppercase tracking-[0.18em] text-ink-400">
-              <span className="text-gold-600">{item.label}</span>{" "}
-              <span className="block sm:inline">{item.detail}</span>
-            </li>
-          ))}
-        </ul>
-      </Container>
     </section>
   );
 }

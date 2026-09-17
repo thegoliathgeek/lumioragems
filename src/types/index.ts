@@ -40,15 +40,30 @@ export interface Collection {
   stock?: number;
 }
 
+/**
+ * A block of long-form copy. Plain strings are paragraphs; the object forms
+ * cover the sub-headings, lists and tables that policies and guides need.
+ */
+export type ContentBlock =
+  | string
+  | { heading: string }
+  | { lead: string }
+  | { list: string[] }
+  | { table: { head: string[]; rows: string[][] } };
+
 export interface JournalPost {
   slug: string;
   title: string;
+  /** The italic line under the title. */
+  subtitle?: string;
   excerpt: string;
+  image?: string;
+  cta?: { label: string; href: string };
   category: "Journal" | "Gem Cyclopedia";
   author: string;
   publishedAt: string;
   readingMinutes: number;
-  body: string[];
+  body: ContentBlock[];
 }
 
 export interface VideoItem {
@@ -62,6 +77,8 @@ export interface VideoItem {
 export interface FaqItem {
   question: string;
   answer: string;
+  list?: string[];
+  after?: string;
   group: string;
 }
 
@@ -69,7 +86,9 @@ export interface PolicyDoc {
   slug: string;
   title: string;
   updatedAt: string;
-  sections: { heading: string; body: string[] }[];
+  intro?: string;
+  sections: { heading: string; body: ContentBlock[] }[];
+  closing?: string;
 }
 
 export interface ApiResult<T> {

@@ -1,72 +1,187 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
-  title: "Custom Jewellery",
+  title: "The Lumiora Bespoke Experience",
   description:
-    "Bespoke jewellery built around a stone you choose — or a stone we source to your brief. Designed in Bengaluru, set by hand, typically six to ten weeks.",
+    "Create a piece that's uniquely yours. Bespoke jewellery designed around a natural gemstone you choose, handcrafted by experienced jewellers — most pieces completed within 6 to 10 weeks.",
   path: "/custom",
 });
 
-const routes = [
-  { title: "Start with a stone", body: "Choose something from the collection and we design the piece around it. The stone leads; the setting follows.", href: "/shop/all-sapphires", cta: "Browse the collection", image: "/studio/start-with-a-stone.jpg", alt: "A loose stone examined under a loupe" },
-  { title: "Start with an idea", body: "Describe the piece and we source stones to match — colour, carat, budget and timeline. Options within days, no obligation.", href: "/custom/enquiry", cta: "Begin an enquiry", image: "/studio/start-with-an-idea.jpg", alt: "A stone being measured against a grading chart" },
-  { title: "Start with an heirloom", body: "Reset an inherited stone into something that will actually be worn. We assess the stone and the metal, and tell you honestly what is worth reusing.", href: "/contact", cta: "Talk to us", image: "/studio/start-with-an-heirloom.jpg", alt: "An inherited ring worn on the hand at the workbench" },
+const pieces = [
+  "Engagement Rings",
+  "Wedding Bands",
+  "Pendants",
+  "Earrings",
+  "Bracelets",
+  "Necklaces",
+  "Men's Jewellery",
+  "Family Heirloom Pieces",
+  "One-of-a-Kind Bespoke Creations",
+];
+
+const reasons = [
+  "Mine-to-market expertise",
+  "Expert gemstone cutting and polishing",
+  "Premium natural gemstones",
+  "Bespoke jewellery handcrafted to your vision",
+  "Personalised design consultations",
+  "Worldwide insured shipping",
+  "Exceptional craftsmanship",
+  "Transparent communication throughout the process",
 ];
 
 export default function CustomPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Bespoke"
-        script="Custom"
-        title="Jewellery"
-        intro="Three ways in, one process, and no obligation at any point until you approve the design."
+        eyebrow="The Lumiora Bespoke Experience"
+        script="Create a piece"
+        title="that's uniquely yours"
+        intro="At Lumiora, we believe your jewellery should be as unique as the story behind it."
         crumbs={[{ name: "Home", path: "/" }, { name: "Custom", path: "/custom" }]}
       />
 
-      <Container className="py-(--spacing-section-sm)">
-        <div className="grid gap-x-10 gap-y-14 md:grid-cols-3">
-          {routes.map((route, index) => (
-            <Reveal key={route.title} delay={index * 90}>
-              <div className="flex h-full flex-col">
-                <div className="relative mb-7 aspect-4/3 overflow-hidden rounded-(--radius-image) bg-rose-100">
-                  <Image
-                    src={route.image}
-                    alt={route.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
-                <h2 className="text-xl">{route.title}</h2>
-                <p className="mt-3 grow leading-relaxed text-ink-500">{route.body}</p>
-                <Link href={route.href} className="mt-6 text-[0.68rem] uppercase tracking-[0.22em] text-gold-600 link-underline self-start">
-                  {route.cta}
-                </Link>
-              </div>
-            </Reveal>
-          ))}
+      <Container width="narrow" className="py-(--spacing-section-sm)">
+        <div className="space-y-7 text-lg leading-relaxed text-ink-500">
+          <p>
+            Whether you&rsquo;re celebrating an engagement, anniversary, birthday, milestone, or simply
+            creating something meaningful, we work with you to design a bespoke piece that will be
+            treasured for generations.
+          </p>
+          <p>
+            Every custom creation begins with an exceptional gemstone. Because we are involved in the
+            journey from mining and sourcing through to cutting, polishing, and craftsmanship, we can
+            offer a truly personalised experience from start to finish.
+          </p>
         </div>
       </Container>
 
-      <section className="border-t border-rose-200 bg-rose-100 py-(--spacing-section)">
+      {/* ---------- Discover your gemstone ---------- */}
+      <section className="border-y border-rose-200 bg-rose-100 py-(--spacing-section)">
+        <Container>
+          <div className="grid items-center gap-16 lg:grid-cols-2">
+            <Reveal>
+              <div className="relative aspect-4/3 overflow-hidden rounded-(--radius-image) bg-rose-100">
+                <Image
+                  src="/studio/start-with-a-stone.jpg"
+                  alt="A loose natural gemstone examined under a loupe"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <SectionHeading align="left" eyebrow="Step into colour" script="Discover your" title="perfect gemstone" />
+              <div className="mt-7 space-y-5 leading-relaxed text-ink-500">
+                <p>Choosing a gemstone is one of the most exciting parts of creating custom jewellery.</p>
+                <p>
+                  Our collection features an exceptional range of natural gemstones, including sapphires,
+                  rubies, emeralds, spinels, tourmalines, garnets, aquamarines, topaz, opals, and many
+                  other precious and semi-precious gemstones.
+                </p>
+                <p>
+                  Each gemstone is unique in colour, brilliance, shape, and character. Our experienced
+                  team will guide you in selecting a gemstone that complements your style, budget, and
+                  the significance of the occasion.
+                </p>
+                <p>
+                  Whether you are drawn to timeless elegance, vibrant colours, or rare collector
+                  gemstones, we&rsquo;ll help you find the perfect centrepiece for your design.
+                </p>
+              </div>
+              <Link href="/shop/all-sapphires" className="mt-8 inline-block text-[0.68rem] uppercase tracking-[0.22em] text-gold-600 link-underline">
+                Explore loose gemstones →
+              </Link>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ---------- Designed around your vision ---------- */}
+      <section className="py-(--spacing-section)">
+        <Container>
+          <div className="grid items-center gap-16 lg:grid-cols-2">
+            <Reveal className="lg:order-2">
+              <div className="relative aspect-4/3 overflow-hidden rounded-(--radius-image) bg-rose-100">
+                <Image
+                  src="/studio/bespoke-panel.jpg"
+                  alt="A pear-cut sapphire set in rose gold, from a past commission"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <SectionHeading align="left" eyebrow="Made for you" script="Jewellery designed" title="around your vision" />
+              <p className="mt-7 leading-relaxed text-ink-500">
+                Once you&rsquo;ve selected your gemstone, we&rsquo;ll collaborate with you to create a piece
+                that reflects your individual style. From timeless classics to contemporary designs,
+                every detail is carefully considered, including:
+              </p>
+              <ul className="mt-6 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                {pieces.map((piece) => (
+                  <li key={piece} className="flex gap-3 text-ink-500">
+                    <span aria-hidden className="mt-[0.7em] size-1 shrink-0 rounded-full bg-gold-400" />
+                    {piece}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 leading-relaxed text-ink-500">
+                Choose from premium precious metals including yellow gold, white gold, rose gold,
+                platinum, and combinations of metals. You may also incorporate diamonds or additional
+                coloured gemstones to create a truly distinctive design.
+              </p>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ---------- Why Lumiora ---------- */}
+      <section className="border-y border-rose-200 bg-rose-100 py-(--spacing-section)">
+        <Container>
+          <SectionHeading eyebrow="The Lumiora difference" script="Why choose" title="Lumiora?" />
+          <ul className="mx-auto mt-14 grid max-w-4xl gap-x-12 gap-y-5 sm:grid-cols-2">
+            {reasons.map((reason, index) => (
+              <Reveal key={reason} delay={index * 50}>
+                <li className="flex items-start gap-4 border-t border-gold-400/40 pt-5 text-ink-600">
+                  <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-gold-500" />
+                  {reason}
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      {/* ---------- Begin ---------- */}
+      <section className="py-(--spacing-section)">
         <Container width="narrow" className="text-center">
-          <h2 className="text-(length:--text-display-md)">Six to ten weeks, typically</h2>
+          <SectionHeading script="Begin your" title="custom jewellery journey" />
           <p className="mt-6 leading-relaxed text-ink-500">
-            From approved design to finished piece. Complex settings and unusual metals can extend
-            that, and we confirm a date in writing before any work begins.
+            Whether you&rsquo;ve already found the perfect gemstone or are just beginning your search,
+            we&rsquo;d love to help bring your vision to life.
+          </p>
+          <p className="mt-4 leading-relaxed text-ink-700">
+            Book a consultation or contact our team today to start designing your one-of-a-kind
+            jewellery piece.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link href="/custom/process" className="rounded-[2px] border border-ink-800/25 px-9 py-4 text-[0.72rem] uppercase tracking-[0.22em] text-ink-800 transition-all duration-500 hover:bg-ink-800 hover:text-ivory-50">
-              See the process
+            <Link href="/custom/enquiry" className="rounded-[2px] bg-ink-800 px-9 py-4 text-[0.72rem] uppercase tracking-[0.22em] text-ivory-50 transition-all duration-500 hover:bg-gold-500">
+              Begin your bespoke journey
             </Link>
-            <Link href="/custom/gallery" className="rounded-[2px] border border-ink-800/25 px-9 py-4 text-[0.72rem] uppercase tracking-[0.22em] text-ink-800 transition-all duration-500 hover:bg-ink-800 hover:text-ivory-50">
-              View past pieces
+            <Link href="/custom/process" className="rounded-[2px] border border-ink-800/25 px-9 py-4 text-[0.72rem] uppercase tracking-[0.22em] text-ink-800 transition-all duration-500 hover:bg-ink-800 hover:text-ivory-50">
+              Our custom process
             </Link>
           </div>
         </Container>

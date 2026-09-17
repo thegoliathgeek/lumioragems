@@ -2,25 +2,25 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMetadata, faqJsonLd } from "@/lib/seo/metadata";
-import { faqs, faqGroups } from "@/data/faq";
+import { faqs, faqGroups, faqAnswerText } from "@/data/faq";
 
 export const metadata = pageMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers on buying, certification, treatment, bespoke commissions, shipping and returns at Lumiora Gems.",
+    "Answers on our natural gemstones, custom jewellery, consultations, shipping, returns, care and gemstone investment at Lumiora.",
   path: "/faq",
 });
 
 export default function FaqPage() {
   return (
     <>
-      <JsonLd data={faqJsonLd(faqs)} />
+      <JsonLd data={faqJsonLd(faqs.map((faq) => ({ question: faq.question, answer: faqAnswerText(faq) })))} />
 
       <PageHeader
         eyebrow="Help"
         script="Frequent"
         title="Questions"
-        intro="If your question is not here, write to us — we answer everything, including the awkward ones."
+        intro="If your question isn't covered here, please contact our team — we'll be delighted to assist."
         crumbs={[{ name: "Home", path: "/" }, { name: "FAQ", path: "/faq" }]}
       />
 
@@ -41,7 +41,20 @@ export default function FaqPage() {
                       +
                     </span>
                   </summary>
-                  <p className="mt-4 max-w-prose leading-relaxed text-ink-500">{faq.answer}</p>
+                  <div className="mt-4 max-w-prose space-y-3 leading-relaxed text-ink-500">
+                    <p>{faq.answer}</p>
+                    {faq.list ? (
+                      <ul className="grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
+                        {faq.list.map((item) => (
+                          <li key={item} className="flex gap-3">
+                            <span aria-hidden className="mt-[0.7em] size-1 shrink-0 rounded-full bg-gold-400" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    {faq.after ? <p>{faq.after}</p> : null}
+                  </div>
                 </details>
               ))}
             </div>

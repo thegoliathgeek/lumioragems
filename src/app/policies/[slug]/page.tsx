@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { RichText } from "@/components/ui/RichText";
 import { policies, policiesBySlug } from "@/data/policies";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { formatDate } from "@/lib/utils";
@@ -39,18 +40,22 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
       />
 
       <Container width="narrow" className="py-(--spacing-section-sm)">
+        {policy.intro ? (
+          <p className="mb-14 border-l-2 border-gold-400 pl-6 text-lg leading-relaxed text-ink-500">{policy.intro}</p>
+        ) : null}
+
         <div className="space-y-12">
           {policy.sections.map((section) => (
             <section key={section.heading}>
               <h2 className="text-2xl">{section.heading}</h2>
-              <div className="mt-4 space-y-4">
-                {section.body.map((paragraph, index) => (
-                  <p key={index} className="leading-relaxed text-ink-500">{paragraph}</p>
-                ))}
-              </div>
+              <RichText blocks={section.body} className="mt-4" />
             </section>
           ))}
         </div>
+
+        {policy.closing ? (
+          <p className="mt-16 border-t border-rose-200 pt-8 text-center leading-relaxed text-ink-600">{policy.closing}</p>
+        ) : null}
       </Container>
     </>
   );

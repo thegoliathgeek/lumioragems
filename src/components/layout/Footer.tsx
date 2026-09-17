@@ -20,8 +20,10 @@ const columns = [
       { label: "Journal", href: "/discover/journal" },
       { label: "Gem Cyclopedia", href: "/discover/gem-cyclopedia" },
       { label: "Video Library", href: "/discover/video-library" },
+      { label: "The Care Guide", href: "/discover/journal/the-care-guide" },
       { label: "Custom Jewellery", href: "/custom" },
-      { label: "About Us", href: "/about" },
+      { label: "Our Story", href: "/about" },
+      { label: "From Mine to Masterpiece", href: "/about/sourcing" },
       { label: "FAQ", href: "/faq" },
     ],
   },
@@ -30,6 +32,7 @@ const columns = [
 const policyLinks = [
   { label: "Shipping", href: "/policies/shipping" },
   { label: "Refunds", href: "/policies/refund" },
+  { label: "Warranty", href: "/policies/warranty" },
   { label: "Privacy", href: "/policies/privacy" },
   { label: "Terms", href: "/policies/terms" },
 ];

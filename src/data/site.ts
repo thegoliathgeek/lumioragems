@@ -4,7 +4,7 @@ export const site = {
   tagline: "Natural Sapphires & Fine Gemstones",
   established: 1990,
   description:
-    "A quietly curated house of natural, ethically sourced sapphires and fine gemstones — each stone independently certified and chosen for a life measured in generations.",
+    "Natural Ceylon sapphires and fine gemstones, hand-selected through more than three decades of Sri Lankan gemstone heritage and brought from Sri Lanka to Melbourne — each stone certified and chosen to be treasured for generations.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumioragems.com",
   email: "enquiries@lumioragems.com",
   phone: "+91 80 4000 1990",
@@ -61,6 +61,14 @@ export const navigation = [
       { label: "Video Library", href: "/discover/video-library" },
     ],
   },
-  { label: "About Us", href: "/about", children: [] },
+  {
+    label: "Our Story",
+    href: "/about",
+    children: [
+      { label: "The Lumiora Story", href: "/about" },
+      { label: "From Mine to Masterpiece", href: "/about/sourcing" },
+      { label: "FAQ", href: "/faq" },
+    ],
+  },
   { label: "Contact", href: "/contact", children: [] },
 ] as const;

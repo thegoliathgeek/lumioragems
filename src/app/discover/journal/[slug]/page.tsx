@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { RichText } from "@/components/ui/RichText";
 import { allArticles, articlesBySlug } from "@/data/journal";
 import { pageMetadata, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/metadata";
 import { formatDate } from "@/lib/utils";
@@ -73,17 +75,34 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
           <h1 className="text-(length:--text-display-lg)">{article.title}</h1>
 
+          {article.subtitle ? (
+            <p className="mt-3 font-display text-xl italic text-ink-500">{article.subtitle}</p>
+          ) : null}
+
+          {article.image ? (
+            <div className="relative mt-10 aspect-16/9 overflow-hidden rounded-(--radius-image) bg-rose-100">
+              <Image src={article.image} alt="" fill priority sizes="(max-width: 768px) 100vw, 720px" className="object-cover" />
+            </div>
+          ) : null}
+
           <p className="mt-7 border-l-2 border-gold-400 pl-6 text-lg leading-relaxed text-ink-500">
             {article.excerpt}
           </p>
 
-          <div className="mt-14 space-y-7">
-            {article.body.map((paragraph, index) => (
-              <p key={index} className="text-lg leading-[1.85] text-ink-600">
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          <RichText
+            blocks={article.body}
+            className="mt-14 space-y-7"
+            paragraphClassName="text-lg leading-[1.85] text-ink-600"
+          />
+
+          {article.cta ? (
+            <Link
+              href={article.cta.href}
+              className="mt-14 inline-block rounded-[2px] bg-ink-800 px-9 py-4 text-[0.72rem] uppercase tracking-[0.22em] text-ivory-50 transition-all duration-500 hover:bg-gold-500"
+            >
+              {article.cta.label} <span aria-hidden>→</span>
+            </Link>
+          ) : null}
 
           <footer className="mt-16 border-t border-rose-200 pt-8">
             <p className="text-sm text-ink-400">Written by {article.author}</p>
