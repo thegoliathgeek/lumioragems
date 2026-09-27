@@ -70,5 +70,10 @@ export const navigation = [
       { label: "FAQ", href: "/faq" },
     ],
   },
+  {
+    label: "Auctions",
+    href: "/auctions",
+    children: [],
+  },
   { label: "Contact", href: "/contact", children: [] },
 ] as const;
