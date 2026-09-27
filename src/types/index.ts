@@ -96,3 +96,97 @@ export interface ApiResult<T> {
   data?: T;
   error?: string;
 }
+
+/* ---------------------------------------------------------------------------
+   Auctions
+   ------------------------------------------------------------------------ */
+
+export type AuctionStatus = "upcoming" | "live" | "closed";
+export type LotStatus = "upcoming" | "open" | "closing" | "sold" | "passed";
+
+export interface Bid {
+  id: string;
+  /**
+   * Masked bidder handle. Bidder names are never published — the paddle
+   * number is the only identity a lot page ever shows.
+   */
+  paddle: string;
+  amount: number;
+  placedAt: string;
+  /** Raised by a standing maximum rather than typed by hand. */
+  auto?: boolean;
+}
+
+/**
+ * A bid in the seeded catalogue, timed relative to the session opening rather
+ * than to a wall clock, so the fixture reads correctly whichever week it runs.
+ */
+export interface BidSeed {
+  paddle: string;
+  amount: number;
+  /** Minutes after the session opens. */
+  atMinute: number;
+  auto?: boolean;
+}
+
+export interface Lot {
+  id: string;
+  slug: string;
+  lotNumber: number;
+  /** The catalogue stone under the hammer. Specs and photography come from it. */
+  productSlug: string;
+  openingBid: number;
+  /** Low and high estimate, in the base currency. */
+  estimate: [number, number];
+  /** Absent means the lot sells to the highest bid, whatever it is. */
+  reserve?: number;
+  /** Minutes after the session opens that this lot closes. */
+  closesAfterMinutes: number;
+  /** Opening book. Live bids are appended by the bid store on top of these. */
+  seedBids: BidSeed[];
+}
+
+export interface Auction {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  intro: string;
+  /** e.g. "7:00 pm AEST / 5:00 pm AWST" — shown, never parsed. */
+  timeLabel: string;
+  opensAt: string;
+  closesAt: string;
+  terms: string[];
+  lots: Lot[];
+}
+
+/** A lot joined to its catalogue stone and to its live bidding state. */
+export interface LotView extends Lot {
+  stone: Product;
+  status: LotStatus;
+  /** The opening bid until someone bids; the highest bid thereafter. */
+  currentBid: number;
+  bidCount: number;
+  /** What the next bid must be at least. */
+  nextBid: number;
+  increment: number;
+  /** Resolved close, including any soft-close extension. Newest bid first. */
+  closesAt: string;
+  history: Bid[];
+  leadPaddle?: string;
+  reserveMet: boolean;
+}
+
+/** The slice of lot state the bid endpoint returns to the panel. */
+export interface LotState {
+  slug: string;
+  status: LotStatus;
+  currentBid: number;
+  bidCount: number;
+  nextBid: number;
+  increment: number;
+  closesAt: string;
+  history: Bid[];
+  leadPaddle?: string;
+  reserveMet: boolean;
+}

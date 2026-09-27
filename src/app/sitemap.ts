@@ -4,6 +4,7 @@ import { collections } from "@/data/collections";
 import { products } from "@/data/products";
 import { journalPosts, cyclopediaEntries } from "@/data/journal";
 import { policies } from "@/data/policies";
+import { auctionLots } from "@/data/auctions";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url;
@@ -22,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/discover/video-library`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
     { url: `${base}/about/sourcing`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${base}/auctions`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: `${base}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
     { url: `${base}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
   ];
@@ -54,5 +56,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   }));
 
-  return [...staticRoutes, ...collectionRoutes, ...productRoutes, ...articleRoutes, ...policyRoutes];
+  // Lots are short-lived but heavily linked while a session runs, so they are
+  // listed and crawled often rather than left out.
+  const lotRoutes: MetadataRoute.Sitemap = auctionLots.map((lot) => ({
+    url: `${base}/auctions/${lot.slug}`,
+    lastModified: now,
+    changeFrequency: "hourly",
+    priority: 0.6,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...collectionRoutes,
+    ...productRoutes,
+    ...lotRoutes,
+    ...articleRoutes,
+    ...policyRoutes,
+  ];
 }

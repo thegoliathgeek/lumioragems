@@ -60,6 +60,33 @@ export const newsletterSchema = z.object({
   company: honeypot,
 });
 
+/**
+ * A bid. `amount` is what the bidder is offering now; `maxBid` is an optional
+ * ceiling the proxy engine may bid up to on their behalf. Both are whole
+ * units of the base currency — the increment ladder never produces cents.
+ */
+export const bidSchema = z.object({
+  lotSlug: z.string().trim().min(3, "Which lot?").max(120),
+  amount: z.coerce
+    .number({ invalid_type_error: "Please enter a bid amount." })
+    .int("Bids are placed in whole dollars.")
+    .min(1, "Please enter a bid amount.")
+    .max(5_000_000, "Please contact us directly to bid at that level."),
+  maxBid: z.coerce
+    .number()
+    .int("A maximum is set in whole dollars.")
+    .max(5_000_000, "Please contact us directly to bid at that level.")
+    .optional(),
+  name,
+  email,
+  consent: z.literal(true, {
+    errorMap: () => ({ message: "Please confirm you accept the conditions of sale." }),
+  }),
+  company: honeypot,
+});
+
+export type BidInput = z.infer<typeof bidSchema>;
+
 export const productQuerySchema = z.object({
   collection: z.string().trim().max(80).optional(),
   q: z.string().trim().max(120).optional(),
